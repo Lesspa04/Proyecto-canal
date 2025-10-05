@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de inundaciones | GlobalTech</title>
+    <link rel="stylesheet" href="../src/css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-contenido">
+            <img src="assets/images/logo.png" alt="Logo GlobalTech" class="logo">
+            <div class="header-texto">
+                <h1>Proyecto de control de inundaciones</h1>
+                <p>Vía Calera km 4.5 - Monitoreo con sensores</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navegacion">
+        <ul>
+            <li><button id="btn-proyecto">Información del proyecto</button></li>
+            <li><button id="btn-empresa">Información GlobalTech</button></li>
+            <li><button id="btn-sensores">Consulta de sensores</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Sección 1: Información del Proyecto -->
+        <section id="seccion-proyecto" class="seccion-activa">
+            <h2>Información del proyecto</h2>
+            
+            <article class="subseccion">
+            <h3>Antecedentes</h3>
+            <p>El 12 de noviembre de 2022, el barrio San Luis Altos del Cabo fue escenario de 
+                una avenida torrencial provocada por intensas lluvias. Este evento resultó en 
+                la saturación de varias quebradas, cuyo caudal excesivo arrastró sedimentos, 
+                material y vegetación. La catástrofe tuvo graves consecuencias, afectando a 
+                múltiples predios, interrumpiendo la vía Bogotá - La Calera y pérdida de vidas.</p>
+            <div class="contenedor-imagenes">
+                <img src="assets/images/antecedentes.jpg" alt="Quebrada Morací" width="400">
+                <img src="assets/images/antecedentes2.png" alt="Detalle de la Quebrada Morací" width="200">
+                <img src="assets/images/inundacion.jpg" alt="Daños en la Vía a La Calera" width="355">
+            </div>
+
+            <h3>Causas y afectaciones</h3>
+            <p>La vulnerabilidad de San Luis Altos del Cabo se debe, en gran medida, a la naturaleza 
+                 de su desarrollo urbano. Gran parte del sector se compone de asentamientos informales 
+                 donde la construcción no siguió las pautas de planeación urbana adecuadas. Esto ha 
+                 llevado a:</p>
+            <ul>
+                <li><strong>Ocupación de zonas de riesgo:</strong>Construcción de predios en áreas inadecuadas y de alto riesgo.</li>
+                <li><strong>Falta de gestión hídrica:</strong>Las quebradas carecen de estudios hidrológicos actualizados y de una gestión adecuada.</li>
+                <li><strong>Deficiencias de drenaje:</strong>Ausencia total o insuficiencia de elementos de drenaje pluvial que puedan manejar volúmenes de agua extraordinarios.</li>
+            </ul>
+            <p> Adicionalmente, se identificaron factores de riesgo específicos que contribuyeron al desastre:</p>
+            <ul>
+                <li>El IDIGER había advertido previamente sobre la presencia de vegetación con raíces débiles en los cauces, un material que fue fácilmente arrastrado por el flujo torrencial.</li>
+                <li>Se detectó la ausencia de equipos y sistemas especializados para la prevención de desastres.</li>
+                <li>Inspecciones en campo (apoyadas por herramientas como Google Earth) revelaron excavaciones y obras deficientemente ejecutadas en las riberas de las quebradas, lo que comprometió su estabilidad estructural.</li>
+            </ul>
+            </article>
+
+            <article class="subseccion">
+                <h3>Nuestro proyecto</h3>
+                <p>Se realizara el diseño e implementación de un sistema de drenaje para controlar el 
+                    riesgo de inundación en San Luis Altos del Cabo. Este sistema se centrará en la 
+                    construcción de un canal que prevenga la saturación de la Quebrada Moraci, mitigando 
+                    así los desastres causados por la avenida torrencial de noviembre de 2022.</p>
+            <div class="contenedor-imagenes">
+                <img src="assets/images/canal.jpg" alt="Imagen de canal diseñado" width="355">
+            </div>
+                <p> Además, se instalarán sensores especializados dentro del canal para la detección 
+                    temprana de anomalías. Estos sensores generarán reportes de estado generales y en 
+                    tiempo real, los cuales serán publicados en nuestra página web. Toda la información 
+                    recolectada se almacenará en una base de datos histórica, permitiendo el análisis de 
+                    tendencias y la gestión proactiva del riesgo. </p>
+            <div class="contenedor-imagenes">
+                <img src="assets/images/sensores.jpg" alt="Imagen de sensor" width="355">
+            </div>
+            </article>
+
+            <article class="subseccion">
+                <h3>Medidas de seguridad</h3>
+            </article>
+        </section>
+
+        <!-- Sección 2: Información de la Empresa GlobalTech -->
+        <section id="seccion-empresa" class="seccion-oculta">
+            <h2>Empresa GlobalTech</h2>
+            
+            <article class="subseccion">
+                <h3>Propósito de la Empresa</h3>
+                <p>GlobalTech tiene como propósito plantear soluciones a problemáticas ambientales 
+                    desde una perspectiva ingenieril, mediante el uso de distintas disciplinas, 
+                    implementando tecnologías innovadoras en obras civiles, ofreciendo apoyo en redes 
+                    de comunicación y monitoreo de datos mediante web e implementar por medio del uso 
+                    de sensores, chips y otras alternativas sistematizadas a través de la automatización 
+                    de cualquier área requerida y necesaria dentro de las posibles problemáticas</p>
+            <div class="contenedor-imagenes">
+                <img src="assets/images/logo.png" alt="Logo de la empresa" width="200">
+            </div>
+            </article>
+
+            <article class="subseccion">
+                <h3>Miembros de la empresa</h3>
+                <p>A continuación, los integrantes de la empresa con sus respectivos roles:</p>
+                <ul>
+                    <li><strong>Carlos Mauricio Medina Estupiñan</strong> - </li>
+                    <li><strong>Javier Leonardo Fuentes Mejía</strong> - </li>
+                    <li><strong>Johan Alexander Gómez Pulido</strong> - </li>
+                    <li><strong>Jonathan David Cobos Prieto</strong> - </li>
+                    <li><strong>Jonnathan Marín López</strong> - </li>
+                    <li><strong>Juliana Alarcón Rodríguez</strong> - </li>
+                    <li><strong>Lesly Mariana Parra Moncada</strong> - </li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Sección 3: Consulta de Sensores y Base de Datos -->
+        <section id="seccion-sensores" class="seccion-oculta">
+            <h2>Consulta de Sensores y Base de Datos</h2>
+            <p>Consulta datos históricos de sensores implementados en Vía Calera km 4.5. Incluye niveles de agua, alertas y acciones. (Futuro: Integración en tiempo real con sensores IoT).</p>
+            
+            <form id="form-busqueda">
+                <label for="fecha">Fecha (YYYY-MM-DD):</label>
+                <input type="date" id="fecha" name="fecha">
+                
+                <label for="tipo">Tipo de Alerta:</label>
+                <select id="tipo" name="tipo">
+                    <option value="">Todas</option>
+                    <option value="alta">Nivel Alto (>150 cm)</option>
+                    <option value="media">Nivel Medio (50-150 cm)</option>
+                    <option value="baja">Nivel Bajo (<50 cm)</option>
+                </select>
+                
+                <button type="submit">Buscar</button>
+            </form>
+
+            <div id="resultados">
+                <table id="tabla-sensores">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Sensor ID</th>
+                            <th>Nivel de Agua (cm)</th>
+                            <th>Tipo de Alerta</th>
+                            <th>Acciones Tomadas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-sensores">
+                        <!-- Datos se cargan con JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GlobalTech. Todos los derechos reservados. | Proyecto Vía Calera</p>
+    </footer>
+
+    <script src="../src/js/script.js"></script>
+</body>
+</html>

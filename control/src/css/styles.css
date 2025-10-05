@@ -1,0 +1,223 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.header-principal {
+    background: linear-gradient(135deg, #42ec5e, #1a5825);
+    color: white;
+    padding: 1rem 0;
+}
+
+.header-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    gap: 1rem;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    border-radius: 20%;
+    margin: 10px;
+}
+
+.header-texto h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.header-texto p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Navegación */
+.navegacion ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background-color: #214d2a;
+    padding: 1rem 0;
+}
+
+.navegacion button {
+    background-color: #1ca333;
+    font-size: 1.3rem;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.navegacion button:hover {
+    background-color: #1ca333;
+}
+
+.navegacion button.activo {
+    background-color: #1ca333;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    display: none;
+}
+
+.seccion-activa {
+    display: block;
+}
+
+.subseccion {
+    margin: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 2px;
+}
+
+.subseccion h3 {
+    color: #1a5825;
+    font-size: 1.7rem;
+    margin: 1rem;
+    border-bottom: 2px solid #1ca333;
+    padding-bottom: 0.5rem;
+}
+
+.subseccion ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.subseccion img {
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.contenedor-imagenes {
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+form label {
+    font-weight: bold;
+    flex: 1;
+    min-width: 150px;
+}
+
+form input, form select, form button {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    flex: 1;
+    min-width: 200px;
+}
+
+form button {
+    background-color: #1ca333;
+    color: white;
+    cursor: pointer;
+    min-width: auto;
+}
+
+form button:hover {
+    background-color: #1ca333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #1ca333;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #333;
+    color: white;
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .navegacion ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .navegacion button {
+        margin: 0.25rem 0;
+        width: 80%;
+    }
+    
+    form {
+        flex-direction: column;
+    }
+    
+    form input, form select, form button {
+        min-width: auto;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    .subseccion img {
+        width: 100%;
+    }
+}
