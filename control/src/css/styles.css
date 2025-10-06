@@ -16,13 +16,14 @@ body {
     background: linear-gradient(135deg, #42ec5e, #1a5825);
     color: white;
     padding: 1rem 0;
+    width: 100%;
 }
 
 .header-contenido {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 1rem;
     gap: 1rem;
@@ -36,22 +37,29 @@ body {
 }
 
 .header-texto h1 {
-    font-size: 3.5rem;
+    font-size: 2.9rem;
     margin-bottom: 0.25rem;
 }
 
 .header-texto p {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     opacity: 0.9;
 }
 
 /* Navegación */
+
+.navegacion {
+    background-color: #214d2a;
+    width: 100%;
+}
+
 .navegacion ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     list-style: none;
-    background-color: #214d2a;
-    padding: 1rem 0;
+    padding: 0.75rem 0.5rem;
+    gap: 0.5rem;
 }
 
 .navegacion button {
@@ -63,15 +71,12 @@ body {
     margin: 0 0.5rem;
     cursor: pointer;
     border-radius: 6px;
-    transition: background-color 0.3s;
+    transition: background-color 0.5s;
 }
 
-.navegacion button:hover {
-    background-color: #1ca333;
-}
-
+.navegacion button:hover,
 .navegacion button.activo {
-    background-color: #1ca333;
+    background-color: #107020;
 }
 
 main {
@@ -93,6 +98,7 @@ section {
     padding: 1.5rem;
     background: white;
     border-radius: 2px;
+    overflow: hidden;
 }
 
 .subseccion h3 {
@@ -115,9 +121,29 @@ section {
 }
 
 .contenedor-imagenes {
-    display: flex; 
-    justify-content: center; 
-    gap: 15px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 1rem 0;
+}
+
+.contenedor-imagenes img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.btn-pdf {
+    display: inline-block;
+    background-color: #1ca333;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    padding: 0.75rem 0.5rem;
 }
 
 form {
@@ -128,7 +154,6 @@ form {
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 form label {
@@ -162,7 +187,11 @@ table {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-width: 600px;
+}
+
+#resultados {
+    overflow-x: auto;
 }
 
 th, td {
