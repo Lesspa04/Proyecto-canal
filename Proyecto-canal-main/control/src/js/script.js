@@ -1,30 +1,55 @@
 // ====================================
-// Simulación de Base de Datos
+// Configuración API
+// ====================================
+const API_URL = 'http://localhost:8080/api/sensores';
+
+// ====================================
+// Gestión de datos desde API
 // ====================================
 class BaseDatosSensores {
   constructor() {
-    this.sensores = [
-      { fecha: '2025-11-10', sensorId: 'S002', nivel: 30, tipo: 'baja' },
-      { fecha: '2025-10-15', sensorId: 'S001', nivel: 180, tipo: 'alta' },
-      { fecha: '2025-09-20', sensorId: 'S002', nivel: 90, tipo: 'media' },
-      { fecha: '2025-08-10', sensorId: 'S001', nivel: 100, tipo: 'media' },
-      { fecha: '2025-07-25', sensorId: 'S003', nivel: 150, tipo: 'alta' },
-      { fecha: '2025-07-10', sensorId: 'S002', nivel: 30, tipo: 'baja' },
-      { fecha: '2025-06-15', sensorId: 'S001', nivel: 90, tipo: 'media' },
-      { fecha: '2025-05-20', sensorId: 'S002', nivel: 90, tipo: 'media' },
-      { fecha: '2025-04-10', sensorId: 'S001', nivel: 40, tipo: 'baja' },
-      { fecha: '2025-03-05', sensorId: 'S003', nivel: 70, tipo: 'media' },
-      { fecha: '2025-02-12', sensorId: 'S002', nivel: 120, tipo: 'media' },
-      { fecha: '2025-01-15', sensorId: 'S002', nivel: 160, tipo: 'alta' },
-    ];
+    this.sensores = [];
   }
 
-  filtrar(fecha, tipo) {
-    return this.sensores.filter(s => {
-      const coincideFecha = !fecha || s.fecha === fecha;
-      const coincideTipo = !tipo || s.tipo === tipo;
-      return coincideFecha && coincideTipo;
-    });
+  async cargar() {
+    try {
+      const respuesta = await fetch(API_URL);
+      if (!respuesta.ok) throw new Error('Error al obtener datos');
+      const datos = await respuesta.json();
+      this.sensores = datos.map(d => ({
+        id: d.id,
+        fecha: d.fecha,
+        sensorId: d.sensorId,
+        nivel: d.nivelDeAguaCm,
+        tipo: d.tipoAlerta.toLowerCase()
+      }));
+      return this.sensores;
+    } catch (error) {
+      console.error('Error cargando datos:', error);
+      return [];
+    }
+  }
+
+  async filtrar(fecha, tipo) {
+    try {
+      let url = `${API_URL}/filtrar?`;
+      if (fecha) url += `fecha=${fecha}&`;
+      if (tipo) url += `tipo=${tipo}`;
+      
+      const respuesta = await fetch(url);
+      if (!respuesta.ok) throw new Error('Error al filtrar');
+      const datos = await respuesta.json();
+      return datos.map(d => ({
+        id: d.id,
+        fecha: d.fecha,
+        sensorId: d.sensorId,
+        nivel: d.nivelDeAguaCm,
+        tipo: d.tipoAlerta.toLowerCase()
+      }));
+    } catch (error) {
+      console.error('Error filtrando datos:', error);
+      return this.sensores;
+    }
   }
 }
 
@@ -55,8 +80,10 @@ function mostrarSeccion(seccion, boton) {
   boton.classList.add('activo');
 
   if (seccion.id === 'seccion-sensores') {
-    cargarSensores();
-    cargarClima();
+    db.cargar().then(() => {
+      cargarSensores();
+      cargarClima();
+    });
   }
 }
 
@@ -70,17 +97,19 @@ btnSensores.addEventListener('click', () => mostrarSeccion(seccionSensores, btnS
 let paginaActual = 1;
 const registrosPorPagina = 10;
 
-function cargarSensores(fecha = '', tipo = '') {
-  const sensores = db.filtrar(fecha, tipo);
+async function cargarSensores(fecha = '', tipo = '') {
+  const sensores = await db.filtrar(fecha, tipo);
   mostrarPagina(sensores, 1);
   mostrarGrafica(sensores);
 
-  formBusqueda.addEventListener('submit', e => {
-  e.preventDefault();
-  const fecha = document.getElementById('fecha').value;
-  const tipo = document.getElementById('tipo').value;
-  cargarSensores(fecha, tipo);
-});
+  formBusqueda.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fecha = document.getElementById('fecha').value;
+    const tipo = document.getElementById('tipo').value;
+    const sensoresF = await db.filtrar(fecha, tipo);
+    mostrarPagina(sensoresF, 1);
+    mostrarGrafica(sensoresF);
+  });
 }
 
 function mostrarPagina(sensores, pagina) {
