@@ -238,8 +238,131 @@ function mostrarGrafica(sensores) {
 }
 
 // ====================================
+// Generar PDF
+// ====================================
+function generarPDF() {
+  try {
+    const { jsPDF } = window.jspdf;
+    
+    if (!jsPDF) {
+      alert('Error: La librería jsPDF no se ha cargado correctamente.');
+      console.error('jsPDF no disponible');
+      return;
+    }
+
+    const doc = new jsPDF('p', 'mm', 'a4');
+    
+    // Encabezado
+    doc.setFontSize(16);
+    doc.setTextColor(10, 86, 208);
+    doc.text('Reporte de Sensores - Canal de Drenaje', 10, 15);
+    
+    doc.setFontSize(10);
+    doc.setTextColor(0, 0, 0);
+    doc.text(`Generado: ${new Date().toLocaleString('es-CO')}`, 10, 25);
+    
+    // Tabla
+    const tabla = document.getElementById('tabla-sensores');
+    if (!tabla) {
+      alert('Error: Tabla no encontrada');
+      return;
+    }
+    
+    const rows = [];
+    const headers = ['Fecha', 'Sensor ID', 'Nivel (cm)', 'Tipo Alerta'];
+    
+    // Recopilar datos de la tabla visible
+    const tbody = tabla.querySelector('tbody');
+    tbody.querySelectorAll('tr').forEach(tr => {
+      const celdas = tr.querySelectorAll('td');
+      if (celdas.length > 0) {
+        rows.push([
+          celdas[0].textContent.trim(),
+          celdas[1].textContent.trim(),
+          celdas[2].textContent.trim(),
+          celdas[3].textContent.trim()
+        ]);
+      }
+    });
+    
+    if (rows.length === 0) {
+      doc.text('No hay datos disponibles para mostrar.', 10, 35);
+    } else {
+      // Usar autoTable si está disponible
+      if (doc.autoTable) {
+        doc.autoTable({
+          head: [headers],
+          body: rows,
+          startY: 35,
+          styles: { 
+            fontSize: 9, 
+            cellPadding: 3,
+            textColor: [0, 0, 0]
+          },
+          headStyles: { 
+            fillColor: [10, 86, 208], 
+            textColor: [255, 255, 255],
+            fontStyle: 'bold'
+          },
+          alternateRowStyles: { 
+            fillColor: [230, 240, 250] 
+          },
+          margin: { top: 35 }
+        });
+      } else {
+        // Fallback: tabla simple si autoTable no está disponible
+        let y = 35;
+        doc.setFontSize(9);
+        
+        // Encabezados
+        doc.setTextColor(255, 255, 255);
+        doc.setFillColor(10, 86, 208);
+        headers.forEach((header, i) => {
+          doc.rect(10 + (i * 40), y - 5, 40, 7, 'F');
+          doc.text(header, 11 + (i * 40), y);
+        });
+        
+        // Filas
+        y += 10;
+        doc.setTextColor(0, 0, 0);
+        rows.forEach((row, idx) => {
+          if (idx % 2 === 0) {
+            doc.setFillColor(230, 240, 250);
+            doc.rect(10, y - 5, 160, 7, 'F');
+          }
+          row.forEach((cell, i) => {
+            doc.text(cell, 11 + (i * 40), y);
+          });
+          y += 7;
+        });
+      }
+    }
+    
+    // Descargar
+    const filename = 'Reporte_Sensores_' + new Date().getTime() + '.pdf';
+    doc.save(filename);
+    console.log('PDF descargado: ' + filename);
+    
+  } catch (error) {
+    console.error('Error al generar PDF:', error);
+    alert('Error al generar el PDF: ' + error.message);
+  }
+}
+
+// ====================================
+// Listener para botón PDF
+// ====================================
+// Se registra dentro de DOMContentLoaded
+
+// ====================================
 // Carga inicial
 // ====================================
 document.addEventListener('DOMContentLoaded', () => {
+  // Registrar listener del botón PDF
+  const btnPDF = document.getElementById('btn-imprimir-pdf');
+  if (btnPDF) {
+    btnPDF.addEventListener('click', generarPDF);
+  }
+  
   mostrarSeccion(seccionProyecto, btnProyecto);
 });

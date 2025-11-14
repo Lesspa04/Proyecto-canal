@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="control/src/css/styles.css">
     <link rel="icon" href="control/public/assets/images/logo.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 </head>
 <body>
@@ -193,6 +196,7 @@
                     <option value="baja">Baja (menos de 50 cm)</option>
                     </select>
                     <button type="submit">Buscar</button>
+                    <button type="button" id="btn-imprimir-pdf" class="btn-imprimir">Imprimir PDF</button>
                 </form>
                 <!-- Resultados -->
                 <div id="resultados">

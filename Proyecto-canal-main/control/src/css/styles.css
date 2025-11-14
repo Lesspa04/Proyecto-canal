@@ -306,6 +306,14 @@ footer{
     form input, form select, form button {
         min-width: auto;
     }
+
+    .btn-imprimir {
+        background-color: #28a745;
+    }
+
+    .btn-imprimir:hover {
+        background-color: #218838;
+    }
     
     table {
         font-size: 0.9rem;
